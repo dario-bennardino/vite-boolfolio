@@ -8,6 +8,29 @@ import Footer from './components/Footer.vue';
       Header, 
       Main,
       Footer,
+    },
+    data(){
+      return {
+        'projects': []
+      }
+    },
+
+    methods:{
+      getApi(){
+        console.log('get api');
+        axios.get('http://127.0.0.1:8000/api/projects')
+        .then(result =>{
+          // console.log(result.data);
+          this.projects = result.data
+          console.log(this.projects);
+        })
+        .catch(error => {
+          console.log(error);
+        })
+      }
+    },
+    mounted(){
+      this.getApi()
     }
   }
 </script>
@@ -21,5 +44,5 @@ import Footer from './components/Footer.vue';
 
 
 <style lang="scss" scoped>
-  @use './assets/scss/main.scss';
+  // @use './assets/scss/main.scss';
 </style>

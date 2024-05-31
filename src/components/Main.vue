@@ -5,8 +5,8 @@
 </script>
 
 <template>
-    <div>
-        Main
+    <div class="main-wrapper">
+        <h1>Vite Boolfolio</h1>
     </div>
 </template>
 
