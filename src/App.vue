@@ -39,6 +39,15 @@ import Footer from './components/Footer.vue';
   <Header />
   <Main />
   <Footer />
+  <h1 class="text-center">Vite Boolfolio</h1>
+    <div class="main-wrapper">
+        <div>
+            <h5>My projects</h5>
+            <ul>
+                <li v-for="project in projects" :key="project.id">{{ project.id }} - {{ project.title }}</li>  
+            </ul>
+        </div>
+    </div>
 </template>
 
 

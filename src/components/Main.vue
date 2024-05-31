@@ -5,9 +5,7 @@
 </script>
 
 <template>
-    <div class="main-wrapper">
-        <h1>Vite Boolfolio</h1>
-    </div>
+    
 </template>
 
 
