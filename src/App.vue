@@ -11,7 +11,9 @@ import Footer from './components/Footer.vue';
     },
     data(){
       return {
-        'projects': []
+        projects: [],
+        loading: true
+
       }
     },
 
@@ -21,10 +23,12 @@ import Footer from './components/Footer.vue';
         axios.get('http://127.0.0.1:8000/api/projects')
         .then(result =>{
           // console.log(result.data);
+          this.loading = false;
           this.projects = result.data
           console.log(this.projects);
         })
         .catch(error => {
+          this.loading = false;
           console.log(error);
         })
       }
@@ -39,14 +43,22 @@ import Footer from './components/Footer.vue';
   <Header />
   <Main />
   <Footer />
-  <h1 class="text-center">Vite Boolfolio</h1>
+  
     <div class="main-wrapper">
+      <div class="container">
         <div>
+          <h1 class="text-center">Vite Boolfolio</h1>
+          <div v-if="!loading">
             <h5>My projects</h5>
             <ul>
                 <li v-for="project in projects" :key="project.id">{{ project.id }} - {{ project.title }}</li>  
             </ul>
         </div>
+        <!-- <p v-else class="loading"> Loading..... </p> -->
+        <div v-else class="loader"></div>
+        </div>
+      </div>
+        
     </div>
 </template>
 
