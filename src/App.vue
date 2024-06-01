@@ -1,5 +1,6 @@
 <script>
 import axios from 'axios';
+import {store} from './data/store'
 import Header from './components/Header.vue';
 import Main from './components/Main.vue';
 import Footer from './components/Footer.vue';
@@ -20,11 +21,12 @@ import Footer from './components/Footer.vue';
     methods:{
       getApi(){
         console.log('get api');
-        axios.get('http://127.0.0.1:8000/api/projects')
+        //axios.get('http://127.0.0.1:8000/api/projects')
+        axios.get(store.apiUrl)
         .then(result =>{
           // console.log(result.data);
           this.loading = false;
-          this.projects = result.data
+          this.projects = result.data.data
           console.log(this.projects);
         })
         .catch(error => {
