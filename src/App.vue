@@ -46,7 +46,7 @@ import Footer from './components/Footer.vue';
   <Main />
   <Footer />
   
-    <div class="main-wrapper">
+    <!-- <div class="main-wrapper">
       <div class="container">
         <div>
           <h1 class="text-center">Vite Boolfolio</h1>
@@ -56,12 +56,12 @@ import Footer from './components/Footer.vue';
                 <li v-for="project in projects" :key="project.id">{{ project.id }} - {{ project.title }}</li>  
             </ul>
         </div>
-        <!-- <p v-else class="loading"> Loading..... </p> -->
+        
         <div v-else class="loader"></div>
         </div>
       </div>
         
-    </div>
+    </div> -->
 </template>
 
 
