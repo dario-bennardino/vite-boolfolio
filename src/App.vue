@@ -4,11 +4,13 @@ import {store} from './data/store'
 import Header from './components/Header.vue';
 import Main from './components/Main.vue';
 import Footer from './components/Footer.vue';
+
   export default {
     components:{
       Header, 
       Main,
       Footer,
+      
     },
     data(){
       return {
@@ -43,7 +45,34 @@ import Footer from './components/Footer.vue';
 
 <template>
   <Header />
-  <Main />
+  <Main :projects="projects" :loading="loading" />
+
+    <!-- <div class="container my4">
+
+      <div class="row row-col-4">
+        
+        <div v-for="project in projects" :key="project.id" class="card me-2 my-2" style="width: 18rem;">
+          <div class="card-body">
+              <h4 class="card-title">{{ project.title }}</h4>
+              <p class="card-text">{{ project.description }}</p>
+          </div>
+          <ul class="list-group list-group-flush">
+              <li class="list-group-item">{{ project.id }}</li>    
+              <li class="list-group-item">{{ project.creation_date }}</li>    
+          </ul>
+        </div>
+
+        
+
+      </div>
+    
+     
+     
+     
+
+    </div> -->
+    
+
   <Footer />
   
     <!-- <div class="main-wrapper">

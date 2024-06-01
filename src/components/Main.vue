@@ -1,9 +1,16 @@
 <script>
+import { store } from '../data/store';
 import ProjectCard from './ProjectCard.vue';
     export default {
         components:{
             ProjectCard
-        }
+        },
+       props: {
+        projects:Array,
+        loading: Boolean
+
+       }
+        
     }
 </script>
 
@@ -16,12 +23,16 @@ import ProjectCard from './ProjectCard.vue';
             <h5>My projects</h5>
             <div class="row row-col-4">
 
-                <ProjectCard />
-                
+                <ProjectCard
+                    v-for="project in projects"
+                    :key="project.id"
+                    :project="project"
+                    
+                    
+                />
+
             </div>
-            <!-- <ul>
-                <li v-for="project in projects" :key="project.id">{{ project.id }} - {{ project.title }}</li>  
-            </ul> -->
+           
         </div>
         
         <div v-else class="loader"></div>

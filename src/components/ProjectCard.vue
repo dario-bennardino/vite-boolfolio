@@ -1,21 +1,26 @@
 <script>
+import { store } from '../data/store';
     export default {
-        
+        props:{
+            project: Object,
+        }
     }
 </script>
 
 <template>
+
     <div class="card me-2 my-2" style="width: 18rem;">
         <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <h5 class="card-title">{{ project.title }}</h5>
+            <p class="card-text">{{ project.description }}</p>
         </div>
         <ul class="list-group list-group-flush">
-            <li class="list-group-item">An item</li>
-            <li class="list-group-item">A second item</li>
-            <li class="list-group-item">A third item</li>
+            <li class="list-group-item">{{ project.id }}</li> 
+            <li class="list-group-item">{{ project.creation_date }}</li>       
         </ul>
     </div>
+
+
 </template>
 
 
