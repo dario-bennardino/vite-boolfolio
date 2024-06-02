@@ -16,7 +16,14 @@ import { store } from '../data/store';
         </div>
         <ul class="list-group list-group-flush">
             <li class="list-group-item">{{ project.id }}</li> 
-            <li class="list-group-item">{{ project.creation_date }}</li>       
+            <li class="list-group-item">{{ project.creation_date }}</li>
+            <li class="list-group-item">{{ project.technology.name }}</li>        
+            <li v-for="type in project.types" 
+                :key="type.id" 
+                class="list-group-item">
+                
+                {{ type.name }}
+            </li>        
         </ul>
     </div>
 
