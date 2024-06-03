@@ -5,6 +5,7 @@ import Blog from './pages/Blog.vue'
 import About from './pages/About.vue'
 import Contacts from "./pages/Contacts.vue";
 import Error404 from "./pages/Error404.vue";
+import Projects from "./pages/Projects.vue";
 
 const router = createRouter({
     history: createWebHashHistory(),
@@ -12,31 +13,36 @@ const router = createRouter({
         {
             path: '/',
             //nome della rotta
-            nome: 'home',
+            name: 'home',
             component: Home
         },
         {
             path: '/chi-siamo',
             //nome della rotta
-            nome: 'about',
+            name: 'about',
             component: About
         },
         {
             path: '/blog',
             //nome della rotta
-            nome: 'blog',
+            name: 'blog',
             component: Blog
         },
         {
             path: '/contatti',
             //nome della rotta
-            nome: 'contacts',
+            name: 'contacts',
             component: Contacts
         },
         {
-            path: '/errors',
+            path: '/progetti',
             //nome della rotta
-            nome: 'errors404',
+            name: 'projects',
+            component: Projects
+        },
+        {
+            path: '/:pathMatch(.*)*',
+            name: 'error404',
             component: Error404
         },
 
