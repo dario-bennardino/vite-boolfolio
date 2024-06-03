@@ -1,52 +1,35 @@
-<script>
-import axios from 'axios';
-import {store} from './data/store'
+ <script>
 import Header from './components/Header.vue';
-import Main from './components/Main.vue';
-import Footer from './components/Footer.vue';
 
   export default {
     components:{
-      Header, 
-      Main,
-      Footer,
+      Header 
+      
       
     },
     data(){
       return {
-        projects: [],
-        loading: true
 
       }
     },
 
     methods:{
-      getApi(){
-        console.log('get api');
-        //axios.get('http://127.0.0.1:8000/api/projects')
-        axios.get(store.apiUrl)
-        .then(result =>{
-          // console.log(result.data);
-          this.loading = false;
-          this.projects = result.data.data
-          console.log(this.projects);
-        })
-        .catch(error => {
-          this.loading = false;
-          console.log(error);
-        })
-      }
+      
     },
     mounted(){
-      this.getApi()
+      
     }
   }
 </script>
 
 <template>
   <Header />
-  <router-view></router-view>
-  <Main :projects="projects" :loading="loading" />
+  <div class="container">
+    <!-- in router vengono innestate tutte le pagine -->
+    <router-view></router-view>
+  </div>
+
+
 
     <!-- <div class="container my4">
 
@@ -64,7 +47,7 @@ import Footer from './components/Footer.vue';
       </div>
     </div> -->
 
-  <Footer />
+  
   
  
     <!-- <div class="main-wrapper">
@@ -85,8 +68,6 @@ import Footer from './components/Footer.vue';
     </div> -->
 </template>
 
-
-
 <style lang="scss" scoped>
-  // @use './assets/scss/main.scss';
+  
 </style>
