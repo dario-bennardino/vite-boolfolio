@@ -31,7 +31,8 @@
 <style lang="scss" scoped>
     .paginator{
         button{
-            margin: 3px;
+            margin: 5px;
+
         }
     }
 </style>

@@ -18,12 +18,17 @@ import { store } from '../data/store';
             <li class="list-group-item">{{ project.id }}</li> 
             <li class="list-group-item">{{ project.creation_date }}</li>
             <li class="list-group-item">{{ project.technology.name }}</li>        
-            <li v-for="type in project.types" 
+            <!-- <li v-for="type in project.types" 
                 :key="type.id" 
                 class="list-group-item">
                 
                 {{ type.name }}
-            </li>        
+            </li>         -->
+            <li class="list-group-item">
+                <span v-for="type in project.types" :key="type.id" class="badge bg-primary me-1">
+                    {{ type.name }}
+                </span>
+            </li>       
         </ul>
     </div>
 
@@ -33,5 +38,10 @@ import { store } from '../data/store';
 
 
 <style lang="scss" scoped>
-
+    .card-title{
+        font-weight: bold;
+    }
+    .card-text{
+        font-style: italic;
+    }
 </style>
