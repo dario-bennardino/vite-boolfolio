@@ -1,25 +1,40 @@
 <script>
 import { store } from '../data/store';
 import axios from 'axios';
+import Paginator from '../components/partials/Paginator.vue'
+
     export default {
         name: 'Projects',
-
+        components:{
+            Paginator
+        },
         data(){
             return{
                 projects:[],
+                paginatorData:{
+
+                }
             }
         },
 
         methods:{
-            getApi(){
-                console.log('get api');
+            // callApi(link){
+            //     console.log(link);
+            // },
+            getApi(apiUrl){
+                // console.log('get api');
                 //axios.get('http://127.0.0.1:8000/api/projects')
-                axios.get(store.apiUrl)
+                axios.get(apiUrl)
                 .then(result =>{
                  // console.log(result.data);
                 // this.loading = false;
                 this.projects = result.data.data
-                console.log(this.projects);
+                // console.log(this.projects);
+                this.paginatorData.current_page = result.data.current_page;
+                this.paginatorData.links = result.data.links;
+                this.paginatorData.total = result.data.total;
+                console.log(this.paginatorData);
+
                 })
                 .catch(error => {
                     // this.loading = false;
@@ -28,7 +43,7 @@ import axios from 'axios';
             }
         },
         mounted(){
-        this.getApi()
+        this.getApi(store.apiUrl)
         }
 
     }
@@ -39,19 +54,20 @@ import axios from 'axios';
         <h1>Progetti</h1>
          <div class="container my4">
 
-      <div class="row row-col-4">
-        <div v-for="project in projects" :key="project.id" class="card me-2 my-2" style="width: 18rem;">
-          <div class="card-body">
-              <h4 class="card-title">{{ project.title }}</h4>
-              <p class="card-text">{{ project.description }}</p>
-          </div>
-          <ul class="list-group list-group-flush">
-              <li class="list-group-item">{{ project.id }}</li>    
-              <li class="list-group-item">{{ project.creation_date }}</li>    
-          </ul>
+            <div class="row row-col-4">
+                <div v-for="project in projects" :key="project.id" class="card me-2 my-2" style="width: 18rem;">
+                    <div class="card-body">
+                        <h4 class="card-title">{{ project.title }}</h4>
+                        <p class="card-text">{{ project.description }}</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">{{ project.id }}</li>    
+                        <li class="list-group-item">{{ project.creation_date }}</li>    
+                    </ul>
+                </div>
+            </div>
+            <Paginator :data="paginatorData" @callApi="getApi" />
         </div>
-      </div>
-    </div>
     </div>
 </template>
 
