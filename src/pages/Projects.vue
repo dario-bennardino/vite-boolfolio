@@ -1,19 +1,21 @@
 <script>
-import { store } from '../data/store';
-import axios from 'axios';
+import { store } from '../data/store'
+import axios from 'axios'
 import Paginator from '../components/partials/Paginator.vue'
+import Loader from '../components/partials/Loader.vue'
+
 
     export default {
         name: 'Projects',
         components:{
-            Paginator
+            Paginator,
+            Loader
         },
         data(){
             return{
                 projects:[],
-                paginatorData:{
-
-                }
+                paginatorData:{},
+                loading: true
             }
         },
 
@@ -24,10 +26,11 @@ import Paginator from '../components/partials/Paginator.vue'
             getApi(apiUrl){
                 // console.log('get api');
                 //axios.get('http://127.0.0.1:8000/api/projects')
+                this.loading = true;
                 axios.get(apiUrl)
                 .then(result =>{
                  // console.log(result.data);
-                // this.loading = false;
+                this.loading = false;
                 this.projects = result.data.data
                 // console.log(this.projects);
                 this.paginatorData.current_page = result.data.current_page;
@@ -37,7 +40,7 @@ import Paginator from '../components/partials/Paginator.vue'
 
                 })
                 .catch(error => {
-                    // this.loading = false;
+                    this.loading = false;
                     console.log(error);
                 })
             }
@@ -50,8 +53,9 @@ import Paginator from '../components/partials/Paginator.vue'
 </script>
 
 <template>
-    <div>
+    <div v-if="!loading">
         <h1>Progetti</h1>
+        
          <div class="container my4">
 
             <div class="row row-col-4">
@@ -69,6 +73,8 @@ import Paginator from '../components/partials/Paginator.vue'
             <Paginator :data="paginatorData" @callApi="getApi" />
         </div>
     </div>
+    <loader v-else />
+
 </template>
 
 
