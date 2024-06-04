@@ -11,11 +11,11 @@ import { store } from '../data/store';
 
     <div class="card me-2 my-2" style="width: 18rem;">
         <div class="card-body">
-            <h5 class="card-title">{{ project.title }}</h5>
+            <h5 class="card-title">{{ project.id }} - {{ project.title }}</h5>
             <p class="card-text">{{ project.description }}</p>
         </div>
         <ul class="list-group list-group-flush">
-            <li class="list-group-item">{{ project.id }}</li> 
+            <!-- <li class="list-group-item">{{ project.id }}</li>  -->
             <li class="list-group-item">{{ project.creation_date }}</li>
             <li class="list-group-item">{{ project.technology.name }}</li>        
             <!-- <li v-for="type in project.types" 

@@ -146,8 +146,8 @@ import ProjectCard from '../components/ProjectCard.vue'
         .box{
         border: 1px solid black;
         width: 350px;
-        height: 200px;
-        margin-right: 25px;
+        height: 150px;
+        margin-right: 50px;
     }
     }
     
