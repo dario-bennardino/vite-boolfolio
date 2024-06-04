@@ -59,8 +59,44 @@ import ProjectCard from '../components/ProjectCard.vue'
         <h4 class="my-4">Progetti</h4>
         
          <div class="container my4">
-
+            <div class="boxes">
+                <div class="box">
+                    <h5 class="p-2">Technology:</h5>
+                    <div class="box-bedges d-flex justify-content-around flex-wrap m-2">
+                        <span class="badge text-bg-secondary my-2">tech</span>
+                        <span class="badge text-bg-secondary my-2">tech</span>
+                        <span class="badge text-bg-secondary my-2">tech</span>
+                        <span class="badge text-bg-secondary my-2">tech</span>
+                        <span class="badge text-bg-secondary my-2">tech</span>
+                        <span class="badge text-bg-secondary my-2">tech</span>
+                        <span class="badge text-bg-secondary my-2">tech</span>
+                        <span class="badge text-bg-secondary my-2">tech</span>
+                        <span class="badge text-bg-secondary my-2">tech</span>
+                        <span class="badge text-bg-secondary my-2">tech</span>
+                      
+                    </div>
+                    
+                </div>
+                <div class="box">
+                    <h5 class="p-2">Types:</h5>
+                    <div class="box-bedges d-flex justify-content-around flex-wrap m-2">
+                        <span class="badge text-bg-secondary my-2">type</span>
+                        <span class="badge text-bg-secondary my-2">type</span>
+                        <span class="badge text-bg-secondary my-2">type</span>
+                        <span class="badge text-bg-secondary my-2">type</span>
+                        <span class="badge text-bg-secondary my-2">type</span>
+                        <span class="badge text-bg-secondary my-2">type</span>
+                        <span class="badge text-bg-secondary my-2">type</span>
+                        <span class="badge text-bg-secondary my-2">type</span>
+                        <span class="badge text-bg-secondary my-2">type</span>
+                        <span class="badge text-bg-secondary my-2">type</span>
+                       
+                    </div>
+                </div>
+            </div>
+           
             <div class="row row-col-4">
+                
                 <!-- <div v-for="project in projects" :key="project.id" class="card me-2 my-2" style="width: 18rem;">
                     <div class="card-body">
                         <h4 class="card-title">{{ project.title }}</h4>
@@ -87,5 +123,16 @@ import ProjectCard from '../components/ProjectCard.vue'
 
 
 <style lang="scss" scoped>
-
+    .boxes{
+        // border: 1px solid black;
+        display: flex;
+        
+        .box{
+        border: 1px solid black;
+        width: 350px;
+        height: 200px;
+        margin-right: 25px;
+    }
+    }
+    
 </style>
