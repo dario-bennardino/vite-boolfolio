@@ -6,6 +6,7 @@ import About from './pages/About.vue'
 import Contacts from "./pages/Contacts.vue";
 import Error404 from "./pages/Error404.vue";
 import Projects from "./pages/Projects.vue";
+import ProjectDetail from "./pages/ProjectDetail.vue";
 
 const router = createRouter({
     history: createWebHashHistory(),
@@ -39,6 +40,12 @@ const router = createRouter({
             //nome della rotta
             name: 'projects',
             component: Projects
+        },
+        {
+            path: '/dettaglio-progetto/:slug',
+            //nome della rotta
+            name: 'projectDetail',
+            component: ProjectDetail
         },
         {
             path: '/:pathMatch(.*)*',
