@@ -12,7 +12,8 @@ import { store } from '../data/store';
     <div class="card me-2 my-2" style="width: 18rem;">
         <div class="card-body">
             <h5 class="card-title">
-                {{ project.id }} - <a href="#">{{ project.title }}</a>
+                {{ project.id }} - 
+                <router-link :to="{ name: 'projectDetail', params:{slug: project.slug} }">{{ project.title }}</router-link>
             </h5>
             <!-- <h5 class="card-title">{{ project.id }} - {{ project.title }}</h5> -->
             <p class="card-text">{{ project.description }}</p>
