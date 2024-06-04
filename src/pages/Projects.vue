@@ -16,6 +16,8 @@ import ProjectCard from '../components/ProjectCard.vue'
         data(){
             return{
                 projects:[],
+                technologies:[],
+                types:[],
                 paginatorData:{},
                 loading: true
             }
@@ -25,20 +27,48 @@ import ProjectCard from '../components/ProjectCard.vue'
             // callApi(link){
             //     console.log(link);
             // },
-            getApi(apiUrl){
+            getApi(apiUrl, technology = ''){
                 // console.log('get api');
                 //axios.get('http://127.0.0.1:8000/api/projects')
                 this.loading = true;
-                axios.get(apiUrl)
+
+                // switch (technology) {
+                //     case 'technologies':
+                //         this.technologies = result.data
+                //         break;
+                //     case 'types':
+                //         this.types = result.data
+                //         break;
+                //     default:
+                //         this.projects = result.data.data
+                //         this.paginatorData.current_page = result.data.current_page;
+                //         this.paginatorData.links = result.data.links;
+                //         this.paginatorData.total = result.data.total;
+                //         break;
+                // }
+
+                axios.get(apiUrl + technology)
                 .then(result =>{
                  // console.log(result.data);
                 this.loading = false;
-                this.projects = result.data.data
-                // console.log(this.projects);
-                this.paginatorData.current_page = result.data.current_page;
-                this.paginatorData.links = result.data.links;
-                this.paginatorData.total = result.data.total;
-                console.log(this.paginatorData);
+
+                if(technology === 'projects' || technology == ''){
+                    this.projects = result.data.data
+                    // console.log(this.projects);
+                    this.paginatorData.current_page = result.data.current_page;
+                    this.paginatorData.links = result.data.links;
+                    this.paginatorData.total = result.data.total;
+                    console.log(this.projects);
+                    
+                }else if(technology === 'technologies'){
+                    this.technologies = result.data
+                    console.log(this.technologies);
+                }else{
+                    this.types = result.data
+                    console.log(this.types);
+                }
+               
+                console.log(result.data);
 
                 })
                 .catch(error => {
@@ -48,7 +78,9 @@ import ProjectCard from '../components/ProjectCard.vue'
             }
         },
         mounted(){
-        this.getApi(store.apiUrl)
+        this.getApi(store.apiUrl, 'projects');
+        this.getApi(store.apiUrl, 'technologies');
+        this.getApi(store.apiUrl, 'types');
         }
 
     }
@@ -63,16 +95,8 @@ import ProjectCard from '../components/ProjectCard.vue'
                 <div class="box">
                     <h5 class="p-2">Technology:</h5>
                     <div class="box-bedges d-flex justify-content-around flex-wrap m-2">
-                        <span class="badge text-bg-secondary my-2">tech</span>
-                        <span class="badge text-bg-secondary my-2">tech</span>
-                        <span class="badge text-bg-secondary my-2">tech</span>
-                        <span class="badge text-bg-secondary my-2">tech</span>
-                        <span class="badge text-bg-secondary my-2">tech</span>
-                        <span class="badge text-bg-secondary my-2">tech</span>
-                        <span class="badge text-bg-secondary my-2">tech</span>
-                        <span class="badge text-bg-secondary my-2">tech</span>
-                        <span class="badge text-bg-secondary my-2">tech</span>
-                        <span class="badge text-bg-secondary my-2">tech</span>
+                        <span v-for="technology in technologies" :key="`t-${technology.id}`" class="badge text-bg-secondary my-2">{{ technology.name }}</span>
+                  
                       
                     </div>
                     
@@ -80,16 +104,8 @@ import ProjectCard from '../components/ProjectCard.vue'
                 <div class="box">
                     <h5 class="p-2">Types:</h5>
                     <div class="box-bedges d-flex justify-content-around flex-wrap m-2">
-                        <span class="badge text-bg-secondary my-2">type</span>
-                        <span class="badge text-bg-secondary my-2">type</span>
-                        <span class="badge text-bg-secondary my-2">type</span>
-                        <span class="badge text-bg-secondary my-2">type</span>
-                        <span class="badge text-bg-secondary my-2">type</span>
-                        <span class="badge text-bg-secondary my-2">type</span>
-                        <span class="badge text-bg-secondary my-2">type</span>
-                        <span class="badge text-bg-secondary my-2">type</span>
-                        <span class="badge text-bg-secondary my-2">type</span>
-                        <span class="badge text-bg-secondary my-2">type</span>
+                        <span v-for="type in types" :key="`y-${type.id}`" class="badge text-bg-secondary my-2">{{ type.name }}</span>
+                      
                        
                     </div>
                 </div>
