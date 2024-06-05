@@ -1,9 +1,22 @@
 <script>
     export default {
         name: 'Contacts',
+        data(){
+            return{
+                name: 'dario',
+                email: 'dario@.it',
+                message: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi qui sint, earum esse necessitatibus itaque distinctio consectetur quae ad ullam commodi architecto fuga doloremque magnam.',
+            }
+        },
         methods:{
-            sendMail(){
+            sendEmail(){
                 
+                const data = {
+                    name: this.name,
+                    email: this.email,
+                    message: this.message
+                }
+                console.log(data);
             }
         }
     }
@@ -12,7 +25,7 @@
 <template>
     <div class="my-4">
         <h1>Contatti</h1>
-        <form>
+        <form @submit.prevent="sendEmail">
             <div class="mb-3 w-50">
                 <label for="name" class="form-label">Nome</label>
                 <input v-model="name" type="text" id="name" class="form-control"  >
@@ -40,7 +53,7 @@
                 <input type="checkbox" class="form-check-input" id="exampleCheck1">
                 <label class="form-check-label" for="exampleCheck1">Check me out</label>
             </div> -->
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">Invia</button>
         </form>
 
         <!-- <form>
