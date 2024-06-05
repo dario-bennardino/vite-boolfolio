@@ -82,10 +82,7 @@ import Loader from '../components/partials/Loader.vue';
                     <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
                 </div>
 
-                <!-- <div class="mb-3">
-                    <label for="message" class="form-label">Messaggio</label>
-                    <textarea v-model="message" name="message" id="message"></textarea>
-                </div> -->
+            
 
                 <div class="mb-3 w-50">
                     <label for="message" class="form-label">Messaggio</label>
