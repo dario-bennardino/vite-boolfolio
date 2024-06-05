@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory } from "vue-router";
+import { createRouter, createWebHistory } from "vue-router";
 
 import Home from './pages/Home.vue'
 import Blog from './pages/Blog.vue'
@@ -9,7 +9,7 @@ import Projects from "./pages/Projects.vue";
 import ProjectDetail from "./pages/ProjectDetail.vue";
 
 const router = createRouter({
-    history: createWebHashHistory(),
+    history: createWebHistory(),
     routes: [
         {
             path: '/',

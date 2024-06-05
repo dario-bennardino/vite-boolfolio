@@ -1,17 +1,24 @@
 <script>
 import axios from 'axios';
 import { store } from '../data/store';
+import Loader from '../components/partials/Loader.vue';
+
     export default {
         name: 'Contacts',
+        components:{
+            Loader
+        },
         data(){
             return{
                 name: 'dario',
                 email: 'dario@.it',
                 message: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi qui sint, earum esse necessitatibus itaque distinctio consectetur quae ad ullam commodi architecto fuga doloremque magnam.',
+                sending: false,
             }
         },
         methods:{
             sendEmail(){
+                this.sending = true;
                 
                 const data = {
                     name: this.name,
@@ -21,9 +28,11 @@ import { store } from '../data/store';
 
                 axios.post(store.apiUrl + 'send-email', data)
                     .then(result => {
+                        this.sending = false;
                         console.log(result.data);
                     })
                     .catch(err =>{
+                        this.sending = false;
                         console.log(err.message);
                     })
 
@@ -36,7 +45,7 @@ import { store } from '../data/store';
 <template>
     <div class="my-4">
         <h1>Contatti</h1>
-        <form @submit.prevent="sendEmail">
+        <form v-if="!sending" @submit.prevent="sendEmail">
             <div class="mb-3 w-50">
                 <label for="name" class="form-label">Nome</label>
                 <input v-model="name" type="text" id="name" class="form-control"  >
@@ -66,6 +75,7 @@ import { store } from '../data/store';
             </div> -->
             <button type="submit" class="btn btn-primary">Invia</button>
         </form>
+        <Loader v-else />
 
         <!-- <form>
             <div>
