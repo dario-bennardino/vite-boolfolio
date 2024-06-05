@@ -1,4 +1,6 @@
 <script>
+import axios from 'axios';
+import { store } from '../data/store';
     export default {
         name: 'Contacts',
         data(){
@@ -16,6 +18,15 @@
                     email: this.email,
                     message: this.message
                 }
+
+                axios.post(store.apiUrl + 'send-email', data)
+                    .then(result => {
+                        console.log(result.data);
+                    })
+                    .catch(err =>{
+                        console.log(err.message);
+                    })
+
                 console.log(data);
             }
         }
