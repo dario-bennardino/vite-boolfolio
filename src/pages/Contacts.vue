@@ -67,14 +67,14 @@ import Loader from '../components/partials/Loader.vue';
 
         <div v-if="!sending">
             <form v-if="!sent" @submit.prevent="sendEmail">
-                <div class="mb-3 w-50">
+                <div class="mb-3">
                     <label for="name" class="form-label">Nome</label>
                     <input v-model="name" type="text" id="name" class="form-control"  >
                     <p class="error text-danger">{{ errors.name?.toString() }}</p>
                     <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
                 </div>
 
-                <div class="mb-3 w-50">
+                <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
                     <input v-model="email" type="text" class="form-control" name="email" id="email">
                     <p class="error text-danger is-invalid">{{ errors.email?.toString() }}</p>
@@ -84,7 +84,7 @@ import Loader from '../components/partials/Loader.vue';
 
             
 
-                <div class="mb-3 w-50">
+                <div class="mb-3">
                     <label for="message" class="form-label">Messaggio</label>
                     <textarea v-model="message" name="message" id="message" class="form-control"></textarea>
                     <p class="error text-danger">{{ errors.message?.toString() }}</p>
